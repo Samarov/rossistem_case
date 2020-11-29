@@ -1,0 +1,26 @@
+  <br>
+  <form method="post" id="#" action="" enctype="multipart/form-data">
+  <div class="row">
+    <div class="col-md-6">
+      <div class="form-group files color">
+        <input type="file" class="form-control-file" name="files" multiple="">
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <button type="submit" class="btn btn-primary pull-right">Загрузить</button>
+    </div>
+  </div>
+  <br>
+  <div class="row">
+    <div class="col-md-12">
+      %if len(messege) > 0:
+        <strong>Файл(ы):</strong><br>
+        %for text in messege:
+          {{text}}<br>
+        %end
+      %end
+    </div>
+  </div>
+  </form>

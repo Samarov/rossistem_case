@@ -1,0 +1,54 @@
+<form method="post">
+	<div class="row">
+		<div class="col-md-5">
+			<div class="form-group">
+				<select name="spec_id" size="8" class="custom-select">
+				%for col in spec:
+					<option value="{{col[0]}}">{{col[1]}} ({{col[2]}})</option>
+				%end
+				</select>
+			</div>
+		</div>	
+		<div class="col-md-2">
+			<div class="form-group">
+				<input class="btn btn-primary" type="submit" name="find_skils" value="Найти">
+			</div>
+		</div>
+	</div>
+</form>
+<div class="form-group">
+	<h4>{{sp_name or ''}}</h4>
+</div>
+<div class="form-group">{{!sk_name or ''}}</div>
+<br>
+%if len(messege) > 0:
+<table class="table table-xs table-striped">
+  <thead class="thead-xs">
+    <tr>
+      <th scope="col">id</th>
+      <th scope="col">Файл</th>
+      <th scope="col">ФИО</th>
+      <th scope="col">Почта</th>
+      <th scope="col">Телефон</th>
+      <th scope="col">Примечания ОК</th> 
+      <th scope="col">Комментарии рук. отдела</th>
+      <th scope="col">Кол-во совпадений</th>
+    </tr>
+  </thead>
+  <tbody>
+%for row in messege:
+  <tr valign="top">
+    <td>{{row[0]}}</td><td><a href="./download/{{row[2]}}">открыть</a></td><td>{{row[3]}}</td><td>{{row[4]}}</td><td>{{row[5]}}</td><td>{{row[6]}}</td><td>{{row[7]}}</td><td>{{row[9]}}</td>
+  </tr>
+  <tr valign="top">
+    <td colspan = "9"><small>{{!row[1]}}</small></td>
+  </tr>
+%end
+  </tbody>
+</table>
+%end
+
+<div class="form-group">
+Данный модуль позволяет организовать автоматическую рассылку информации заинтересованным руководителям, по мере поступления резюме в базу. То есть, если сейчас нет нужного специалиста, то как он появиться, руководителю сформировавшему вакансию придет сообщение.
+</div>
+<br>

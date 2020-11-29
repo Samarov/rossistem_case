@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="ru" class="h-100">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <title>Цифровой ассистент - {{title or ''}}</title>
+    <!-- Bootstrap core CSS -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+    <style>
+.bd-placeholder-img {
+	font-size: 1.125rem;
+	text-anchor: middle;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+}
+
+@media (min-width: 768px) {
+	.bd-placeholder-img-lg {
+	  font-size: 3.5rem;
+	}
+}
+
+.files input {
+    outline: 2px dashed #92b0b3;
+    outline-offset: -10px;
+    -webkit-transition: outline-offset .15s ease-in-out, background-color .15s linear;
+    transition: outline-offset .15s ease-in-out, background-color .15s linear;
+    padding: 120px 20px 85px 15%;
+    text-align: center !important;
+    margin: 0;
+    width: 100% !important;
+}
+.files input:focus{
+    outline: 2px dashed #92b0b3;  outline-offset: -10px;
+    -webkit-transition: outline-offset .15s ease-in-out, background-color .15s linear;
+    transition: outline-offset .15s ease-in-out, background-color .15s linear; border:1px solid #92b0b3;
+ }
+.files{ position:relative}
+.files:after { 
+    pointer-events: none;
+    position: absolute;
+    top: 60px;
+    left: 0;
+    width: 50px;
+    right: 0;
+    height: 56px;
+    content: "";
+    background-image: url('/static/fileinput.png');
+    display: block;
+    margin: 0 auto;
+    background-size: 100%;
+    background-repeat: no-repeat;
+}
+.color input{ background-color:#f1f1f1;}
+.files:before {
+    position: absolute;
+    bottom: 10px;
+    left: 0;  pointer-events: none;
+    width: 100%;
+    right: 0;
+    height: 57px;
+    content: " или перенесите сюда файлы ";
+    display: block;
+    margin: 0 auto;
+    color: #2ea591;
+    font-weight: 600;
+    text-align: center;
+}
+    </style>
+    <!-- Custom styles for this template -->
+    <link href="/static/sticky-footer-navbar.css" rel="stylesheet">
+  </head>
+  <body class="d-flex flex-column h-100">
+	<header>
+	  <!-- Fixed navbar -->
+	  <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+		<a class="navbar-brand" href="/">Цифровой ассистент</a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+		  <span class="navbar-toggler-icon"></span>
+		</button>
+		<div class="collapse navbar-collapse" id="navbarCollapse">
+		  % include('top_menu.html')
+		  <form class="form-inline mt-2 mt-md-0" method="get" action="/search">
+			<input class="form-control mr-sm-2" type="text" placeholder="Быстрый поиск" aria-label="Search" name="search">
+			<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Найти</button>
+		  </form>
+		</div>
+	  </nav>
+	</header>
+
+<!-- Begin page content -->
+<main role="main" class="flex-shrink-0">
+  <div class="container">
+    <h1 class="mt-4">{{title}}</h1>
+    % if page != '':
+    % include(page+'.html')
+    % else:
+    <br>
+    <p class="lead">В связи с потребностью закрытия большого количества 
+    вакансий в IT-направлении Газпромбанка возросла нагрузка на сотрудников, занимающихся поиском и подбором 
+    персонала. Сотрудник сталкивается со многими рутинными процессами: подготовка описания вакансии и ее 
+    размещение, оценка резюме на соответствие вакансии, отправка первичного тестирования, проверка тестового 
+    задания, отправка ответа по результатам тестирования и рекомендации по выбору вакансии в зависимости от 
+    навыков кандидата. Участникам хакатона предлагается создать систему, которая будет правильно формировать 
+    описание вакансии и автоматизирует дальнейшие процессы по подбору, а также ускорит коммуникацию с 
+    кандидатом.</p>
+    % end
+    <!-- p>Back to <a href="../examples/sticky-footer/">the default sticky footer</a> minus the navbar.</p-->
+  </div>
+</main>
+
+<footer class="footer mt-auto py-3">
+  <div class="container">
+    <span class="text-muted">Команда "Россистема", Цифровой прорыв 2020</span>
+  </div>
+</footer>
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" crossorigin="anonymous"></script>
+<script src="/static/ajax.js"></script>
+</body>
+</html>

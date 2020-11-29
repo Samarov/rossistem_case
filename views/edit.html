@@ -1,0 +1,36 @@
+%# id, text, file_load, fio, email, telefon, comment_ok, comment_ruk, tests, deleted
+<form method="post">
+  <div class="row">
+	<div class="col-md-6">
+       <input class="form-control" type="text" placeholder="Текст" name="correct" value="" id="input_correct">
+	   <input type="hidden" name="input_hidden" value="" id = "input_hidden">
+	</div>
+    <div class="col-md-2">
+	  <button class="btn btn-primary" type="submit">Сохранить</button>
+	</div>
+  </div>
+</form>
+<br>
+<table class="table table-sm table-striped" id="edit_table">
+  <thead class="thead-dark thead-sm">
+    <tr>
+      <th scope="col">id</th>
+      <th scope="col">Текст</th>
+      <th scope="col">Файл</th>
+      <th scope="col">ФИО</th>
+      <th scope="col">Почта</th>
+      <th scope="col">Телефон</th>
+      <th scope="col">Примечания ОК</th> 
+      <th scope="col">Комментарии рук. отдела</th>
+      <th scope="col">Тесты</th>
+      <th scope="col">del</th>
+    </tr>
+  </thead>
+  <tbody>
+%for row in messege:
+  <tr valign="top">
+    <td>{{row[0]}}</td><td>{{!row[1]}}</td><td><a href="./download/{{row[2]}}">открыть</a></td><td id="{{row[0]}}_3">{{row[3]}}</td><td id="{{row[0]}}_4">{{row[4]}}</td><td id="{{row[0]}}_5">{{row[5]}}</td><td id="{{row[0]}}_6">{{row[6]}}</td><td id="{{row[0]}}_7">{{row[7]}}</td><td id="{{row[0]}}_8">{{row[8]}}</td><td id="{{row[0]}}_9">{{row[9]}}</td>
+  </tr>
+%end
+  </tbody>
+</table>

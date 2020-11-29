@@ -1,0 +1,44 @@
+%# id, text, file_load, fio, email, telefon, comment_ok, comment_ruk, tests, deleted
+<form method="get" action="/search">
+  <div class="form-group col-md-8">
+    <input class="form-control" type="text" placeholder="Текст" name="search" value = "{{search_text or ''}}">
+  </div>
+  <div class="form-group col-md-8">
+    <div class="float-left form-check">
+      <label class="form-check-label" for="search-strong">
+      <input type="checkbox" name="search_strong" value="checked" id="search-strong" {{search_strong or ''}}> "строгий" поиск (c подсветкой)</label>
+	<br>
+      <label class="form-check-label" for="search-lemma">
+      <input type="checkbox" name="search_lemma" value="checked" id="search-lemma" {{search_lemma or ''}}> "морфологический" поиск</label>
+    </div>
+    <div class="float-right"><button class="btn btn-primary" type="submit">Найти</button></div>
+  </div>
+</form>
+<br>
+%if len(messege) > 0:
+<table class="table table-xs table-striped">
+  <thead class="thead-xs">
+    <tr>
+      <th scope="col">id</th>
+      <th scope="col">Файл</th>
+      <th scope="col">ФИО</th>
+      <th scope="col">Почта</th>
+      <th scope="col">Телефон</th>
+      <th scope="col">Примечания ОК</th> 
+      <th scope="col">Комментарии рук. отдела</th>
+      <th scope="col">Тесты</th>
+      <th scope="col">del</th>
+    </tr>
+  </thead>
+  <tbody>
+%for row in messege:
+  <tr valign="top">
+    <td>{{row[0]}}</td><td><a href="./download/{{row[2]}}">открыть</a></td><td>{{row[3]}}</td><td>{{row[4]}}</td><td>{{row[5]}}</td><td>{{row[6]}}</td><td>{{row[7]}}</td><td>{{row[8]}}</td><td>{{row[9]}}</td>
+  </tr>
+  <tr valign="top">
+    <td colspan = "9"><small>{{!row[1]}}</small></td>
+  </tr>
+%end
+  </tbody>
+</table>
+%end

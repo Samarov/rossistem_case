@@ -1,0 +1,164 @@
+<form method="post">
+<ul class="nav nav-tabs">
+  <li class="nav-item">
+	%if tab == 'new_spec':
+    <a class="nav-link active" data-toggle="tab" href="#new_spec">Новая специальность</a>
+	%else:
+	<a class="nav-link" data-toggle="tab" href="#new_spec">Новая специальность</a>
+	%end
+  </li>
+  <li class="nav-item">
+	%if tab == 'compare':
+    <a class="nav-link active" data-toggle="tab" href="#compare">Сопоставить</a>
+	%else:
+	<a class="nav-link" data-toggle="tab" href="#compare">Сопоставить</a>
+	%end
+  </li>
+  <li class="nav-item">
+	%if tab == 'opinion':
+    <a class="nav-link active" data-toggle="tab" href="#opinion">Формы</a>
+	%else:
+	<a class="nav-link" data-toggle="tab" href="#opinion">Формы</a>
+	%end
+  </li>
+</ul>
+<div class="tab-content">
+%if tab == 'new_spec':
+  <div class="tab-pane fade show active" id="new_spec">
+%else:
+  <div class="tab-pane fade" id="new_spec">
+%end
+	<br>
+	<div class="row">
+		<div class="col-md-6">
+				<h4>Вакансии</h4>
+				<div class="form-group">
+					<select name="spec" size="10" class="custom-select">
+					%for col in spec:
+						<option value="{{col[0]}}">{{col[1]}}</option>
+					%end
+					</select>
+				</div>
+				<div class="form-group">
+					<input type="text" class="form-control" placeholder="Специальность" name="spec_new">
+				</div>
+				<div class="form-group">
+					<input class="btn btn-primary" type="submit" name="add_spec_new" value="Добавить">
+				</div>
+		</div>
+		<div class="col-md-6">
+				<h4>Навыки, качества</h4>
+				<div class="form-group">
+					<select name="skil" size="10" class="custom-select">
+					%for col in skils:
+						<option value="{{col[0]}}">{{col[1]}}</option>
+					%end
+					</select>
+				</div>
+				<div class="form-group">
+					<input type="text" class="form-control" placeholder="Навык" name="skil_new">
+				</div>
+				<div class="form-group">
+					<input class="btn btn-primary" type="submit" name="add_skil_new" value="Добавить">
+				</div>
+		</div>
+	</div>
+  </div>
+%if tab == 'compare':
+  <div class="tab-pane fade show active" id="compare">
+%else:
+  <div class="tab-pane fade" id="compare">
+%end
+	<br>
+	<div class="row">
+		<div class="col-md-6">
+			<div class="form-group">
+				<h4>Вакансии</h4>
+				<select name="spec_id" size="10" class="custom-select" id="spec_id">
+				%for col in spec:
+					<option value="{{col[0]}}">{{col[1]}}</option>
+				%end
+				</select>
+			</div>
+		</div>
+		<div class="col-md-6">
+			<div class="form-group">
+				<h4>Навыки, качества</h4>
+				<select name="skil_id" size="10" class="custom-select" multiple="" id="skil_id">
+				%for col in skils:
+					<option value="{{col[0]}}">{{col[1]}}</option>
+				%end
+				</select>
+			</div>
+		</div>
+		<div class="col-md-12">
+			<div class="form-group">
+				<input class="btn btn-primary" type="submit" name="add_vacancy_new" value="Сохранить">
+			</div>
+		</div>
+	</div>
+  </div>
+%if tab == 'opinion':
+  <div class="tab-pane fade show active" id="opinion">
+%else:
+  <div class="tab-pane fade" id="opinion">
+%end
+
+	<br>
+	<div class="form-group">
+		<h4>Шаблон</h4>
+    </div>
+	<div class="form-group">
+		<select name="public_id" class="custom-select" id="public_id">
+			<option value="-1" selected>Выбрать</option>
+		%for col in spec:
+			<option value="{{col[0]}}">{{col[1]}}</option>
+		%end
+		</select>
+	</div>
+
+	<div class="form-group">
+	  <label for="skil_public">Ключевые навыки:</label>
+	  <textarea class="form-control rounded-0" id="skil_public" rows="2">{{sk_name or ''}}</textarea>
+	</div>
+	  
+	<div class="form-group">
+		<input type="text" class="form-control" value="от 50 000 до 150 000 руб. на руки">
+    </div>
+
+	<div class="form-group">
+	  <label for="Textarea1">Кто нам нужен:</label>
+	  <textarea class="form-control rounded-0" id="Textarea1" rows="3"></textarea>
+	</div>
+
+	<div class="form-group">
+	  <label for="Textarea2">Требования:</label>
+	  <textarea class="form-control rounded-0" id="Textarea2" rows="3">
+ Высшее образование:
+ Знание языков:
+ Знание библиотек:
+ Английский язык:
+	  </textarea>
+	</div>
+	  
+	<div class="form-group">
+	  <label for="Textarea3">Что мы предлагаем:</label>
+	  <textarea class="form-control rounded-0" id="Textarea3" rows="3">
+ Молодой дружный коллектив
+ Комфортные рабочие места с новым оборудованием
+ Гибкий график работы
+ Оформление по ТК РФ, «белая» конкурентоспособная зарплата
+ ДМС после испытательного срока
+ Кофе, чай в офисе
+ Бонусы по итогам работы
+ Интересная работа и проекты
+	  </textarea>
+	</div>
+	<div class="form-group">
+		<input class="btn btn-primary" type="submit" name="public_vacancy" value="Опубликовать">
+	</div>
+  </div>
+</div>
+</form>
+<br>
+
