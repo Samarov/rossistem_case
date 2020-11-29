@@ -29,7 +29,7 @@ morph_tagger = NewsMorphTagger(emb)
 syntax_parser = NewsSyntaxParser(emb)
 ner_tagger = NewsNERTagger(emb)
 
-ext_docs = ['docx']#, 'pdf'
+ext_docs = ['docx', 'pdf']
 
 conn = sqlite3.connect('./resume.db')
 
